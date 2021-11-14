@@ -43,30 +43,18 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
         ->name('dashboard.deleteNote');
 });
 
+Route::group(['middleware' => ['auth', 'role:user']], function () {
+    Route::get('/dashboard/deleteNote/{id}', 'App\Http\Controllers\DashboardController@deleteNote')
+        ->name('dashboard.deleteNote');
+});
+
+Route::get('/share/{id}',[App\Http\Controllers\DashboardController::class,'share'])->name('share');
 
 Route::get('/image-upload', [App\Http\Controllers\AddNotesController::class, 'createForm']);
 Route::post('/image-upload', [App\Http\Controllers\AddNotesController::class, 'fileUpload'])->name('imageUpload');
 
 
-/*
-// for admin
-Route::group(['middleware' => ['auth', 'role:administrator']], function () {
-    Route::get('/dashboard/administrator', 'App\Http\Controllers\DashboardController@administrator')
-        ->name('dashboard.administrator');
-});
-
-// for superadmin
-Route::group(['middleware' => ['auth', 'role:superadministrator']], function () {
-    Route::get('/dashboard/superadministrator', 'App\Http\Controllers\DashboardController@superadministrator')
-        ->name('dashboard.superadministrator');
-});
-*/
-
 require __DIR__.'/auth.php';
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

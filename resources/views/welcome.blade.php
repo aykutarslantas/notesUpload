@@ -17,14 +17,12 @@
 
         <style>
             textarea {
-                font-size: 20px;
+                font-size: 18px;
                 font-family: 'Shalimar', cursive;
 
                 border: 1px solid #EEEEEE;
                 box-shadow: 1px 1px 0 #DDDDDD;
                 display: block;
-
-                line-height: 50px;
                 margin: 2% auto;
                 padding: 11px 20px 0 70px;
                 resize: none;
@@ -54,8 +52,6 @@
 
             <div class="collapse navbar-collapse" id="navbarsExample03">
                 <ul class="navbar-nav mr-auto">
-
-
 
                 </ul>
                 @if (Route::has('login'))
@@ -90,9 +86,7 @@
                     <form method="post" enctype="multipart/form-data" id="upload-image" action="{{ url('image-upload') }}">
                         <div class="row">
                             @csrf
-                            <div class="col-12">
-                                <textarea name="note" class="form-control" style="font-size: 40px" placeholder="Please add note here..."></textarea>
-                            </div>
+
                             <div class="col-12">
                                 @csrf
                                 @if ($message = Session::get('success'))
@@ -119,9 +113,7 @@
                                     <input type="file" name="imageFile" class="custom-file-input" id="images" multiple="multiple">
                                     <label class="custom-file-label" for="images">Choose image</label>
                                 </div>
-
                             </div>
-
                             <!-- jQuery -->
                             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
                             <script>
@@ -150,8 +142,9 @@
                                     });
                                 });
                             </script>
-
-
+                            <div class="col-12">
+                                <textarea name="note" class="form-control" rows="10" style="padding-top:18px; font-size: 40px; line-height: 48px" placeholder="Please add note here..."></textarea>
+                            </div>
                             <div class="col-12 pt-2">
                                 <button type="submit" class="btn btn-block btn-dark btn-lg">Add</button>
                             </div>
